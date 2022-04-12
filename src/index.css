@@ -29,6 +29,8 @@ a {
 :root {
 	--black: #000000;
 	--white: #FFFFFF;
+  --gray-light: #EDEFF1;
 	--primary: #6367F6;
+  --primary-hover: #2E0CB6;
 	--font-family: "Noto Sans KR", sans-serif;
 }

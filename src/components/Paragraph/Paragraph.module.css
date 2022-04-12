@@ -1,0 +1,16 @@
+.paragraph {
+	margin: 0;
+	font-weight: 400;
+}
+
+.s {
+	color: var(--black);
+font-size: 12px;
+line-height: 16px;
+}
+
+.m {
+	color: #5A607D;
+font-size: 14px;
+line-height: 28px;
+}

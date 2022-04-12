@@ -18,8 +18,8 @@ export const Button = ({
   return (
     <button
       className={cn(styles.button, className, {
-        [styles.primary]: appearance == "primary",
-        [styles.white]: appearance == "white",
+        [styles.primary]: appearance === "primary",
+        [styles.white]: appearance === "white",
       })}
       {...props}
     >

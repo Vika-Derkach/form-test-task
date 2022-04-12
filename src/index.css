@@ -4,6 +4,7 @@ body {
 	margin: 0;
 	color: var(--black);
 	background: #F5F6F8;
+	font-family: 'Inter', sans-serif;
 }
 
 a {
@@ -32,5 +33,5 @@ a {
   --gray-light: #EDEFF1;
 	--primary: #6367F6;
   --primary-hover: #2E0CB6;
-	--font-family: "Noto Sans KR", sans-serif;
+  --red: #D0676A;
 }

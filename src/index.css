@@ -1,0 +1,34 @@
+html,
+body {
+	padding: 0;
+	margin: 0;
+	color: var(--black);
+	background: #F5F6F8;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.visuallyHidden {
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	position: absolute;
+}
+
+.blockDisplay {
+	display: block;
+}
+
+:root {
+	--black: #000000;
+	--white: #FFFFFF;
+	--primary: #6367F6;
+	--font-family: "Noto Sans KR", sans-serif;
+}

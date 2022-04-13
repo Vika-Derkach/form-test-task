@@ -75,7 +75,6 @@ export const Form = ({
             {...register("name")}
             placeholder="Enter cusomer name"
             error={errors.name}
-            tabIndex={isOpened ? 0 : -1}
             aria-invalid={errors.name ? true : false}
           />
           <Label>Customers EIN</Label>
@@ -83,7 +82,6 @@ export const Form = ({
             {...register("EIN")}
             placeholder="Enter cusomer EIN"
             error={errors.EIN}
-            tabIndex={isOpened ? 0 : -1}
             aria-invalid={errors.EIN ? true : false}
           />
           <Label>Notes</Label>
@@ -91,7 +89,6 @@ export const Form = ({
             {...register("notes")}
             placeholder="Notes visible only to you and your team"
             error={errors.notes}
-            tabIndex={isOpened ? 0 : -1}
             aria-label="Notes"
             aria-invalid={errors.notes ? true : false}
           />
@@ -99,25 +96,19 @@ export const Form = ({
           <Label>Primary payment method</Label>
           <SelectPayment
             {...register("paymentMethod")}
-            aria-label="paymentMethod"
-            tabIndex={isOpened ? 0 : -1}
+            aria-label="Payment Method"
             control={control}
           />
         </div>
 
         <Devider />
         <div className={styles.submit}>
-          <Button
-            appearance="white"
-            tabIndex={isOpened ? 0 : -1}
-            onClick={() => setIsOpened(false)}
-          >
+          <Button appearance="white" onClick={() => setIsOpened(false)}>
             Cancel
           </Button>
           <Button
             type="submit"
             appearance="primary"
-            tabIndex={isOpened ? 0 : -1}
             onClick={() => clearErrors()}
           >
             Create

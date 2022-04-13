@@ -1,9 +1,9 @@
 import { DetailedHTMLProps, HTMLAttributes, ReactNode } from "react";
 
-export interface ParagraphProps
+export interface LabelProps
   extends DetailedHTMLProps<
-    HTMLAttributes<HTMLParagraphElement>,
-    HTMLParagraphElement
+    HTMLAttributes<HTMLLabelElement>,
+    HTMLLabelElement
   > {
   size?: "s" | "m";
   children: ReactNode;

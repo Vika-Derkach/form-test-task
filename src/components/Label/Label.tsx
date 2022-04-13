@@ -1,23 +1,23 @@
 import cn from "classnames";
 import React from "react";
-import styles from "./Paragraph.module.css";
-import { ParagraphProps } from "./Paragraph.props";
+import styles from "./Label.module.css";
+import { LabelProps } from "./Label.props";
 
-export const Paragraph = ({
+export const Label = ({
   size = "s",
   children,
   className,
   ...props
-}: ParagraphProps): JSX.Element => {
+}: LabelProps): JSX.Element => {
   return (
-    <p
-      className={cn(styles.paragraph, className, {
+    <label
+      className={cn(styles.label, className, {
         [styles.s]: size === "s",
         [styles.m]: size === "m",
       })}
       {...props}
     >
       {children}
-    </p>
+    </label>
   );
 };

@@ -1,36 +1,32 @@
-.reviewForm {
+.form {
 	font-size: 14px;
 	line-height: 24px;
-	display: grid;
-	grid-template-columns: [start] auto 1fr auto [end];
-	gap: 20px 30px;
-	align-items: center;
+	width: 50%;
+    transform: translateX(50%);
+	background-color: var(--white);
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+	z-index: 3;
 }
 
-.description,
+.formContent {
+	text-align: left;
+	width: 450px;
+	margin: auto;
+}
+
+.formTitle {
+	font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+	background: var(--gray-white);
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin-bottom: 40px;
+}
+
 .submit {
-	grid-column: start / end;
-}
-
-.title {
-	justify-self: left;
-}
-
-.info {
-	margin-left: 15px;
-}
-
-.rating {
-	display: grid;
-	grid-template-columns: auto auto;
-	gap: 20px;
-}
-
-.panel {
-	padding: 20px;
-	position: relative;
-	border-radius: 5px;
-	margin-top: 20px;
+	padding-bottom: 40px;
 }
 
 .success {

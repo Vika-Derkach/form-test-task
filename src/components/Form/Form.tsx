@@ -2,15 +2,17 @@ import cn from "classnames";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "../Button/Button";
+import { Devider } from "../Devider/Devider";
 import { Input } from "../Input/Input";
+import { Label } from "../Label/Label";
+import { Select } from "../Select/Select";
 import { Textarea } from "../Textarea/Textarea";
-import CloseIcon from "./close.svg";
+import { ReactComponent as CloseIcon } from "./close.svg";
 import { IReviewForm } from "./Form.interface";
 import styles from "./Form.module.css";
 import { FormProps } from "./Form.props";
 
 export const Form = ({
-  productId,
   isOpened,
   className,
   ...props
@@ -48,37 +50,49 @@ export const Form = ({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className={cn(styles.reviewForm, className)} {...props}>
-        <Input
-          {...register("name", {
-            required: { value: true, message: "Заполните имя" },
-          })}
-          placeholder="Имя"
-          error={errors.name}
-          tabIndex={isOpened ? 0 : -1}
-          aria-invalid={errors.name ? true : false}
-        />
-        <Input
-          {...register("EIN", {
-            required: { value: true, message: "Заполните заголовок" },
-          })}
-          className={styles.EIN}
-          placeholder="Заголовок отзыва"
-          error={errors.EIN}
-          tabIndex={isOpened ? 0 : -1}
-          aria-invalid={errors.EIN ? true : false}
-        />
-        <Textarea
-          {...register("description", {
-            required: { value: true, message: "Заполните описание" },
-          })}
-          className={styles.description}
-          placeholder="Текст отзыва"
-          error={errors.description}
-          tabIndex={isOpened ? 0 : -1}
-          aria-label="Текст отзыва"
-          aria-invalid={errors.description ? true : false}
-        />
+      <div className={cn(styles.form, className)} {...props}>
+        <div className={styles.formTitle}>
+          Create new customer
+          <button aria-label="Close the form" className={styles.close}>
+            <CloseIcon />
+          </button>
+        </div>
+        <div className={styles.formContent}>
+          <Label>Customer name</Label>
+          <Input
+            {...register("name", {
+              required: { value: true, message: "Enter cusomer name" },
+            })}
+            placeholder="Enter cusomer name"
+            error={errors.name}
+            tabIndex={isOpened ? 0 : -1}
+            aria-invalid={errors.name ? true : false}
+          />
+          <Input
+            {...register("EIN", {
+              required: { value: true, message: "Enter cusomer EIN" },
+            })}
+            className={styles.EIN}
+            placeholder="Enter cusomer EIN"
+            error={errors.EIN}
+            tabIndex={isOpened ? 0 : -1}
+            aria-invalid={errors.EIN ? true : false}
+          />
+          <Textarea
+            {...register("notes", {
+              required: { value: true, message: "Enter notes" },
+            })}
+            className={styles.notes}
+            placeholder="Notes visible only to you and your team"
+            error={errors.notes}
+            tabIndex={isOpened ? 0 : -1}
+            aria-label="Notes"
+            aria-invalid={errors.notes ? true : false}
+          />
+          <Select name="hhh" />
+        </div>
+
+        <Devider className={styles.hr} />
         <div className={styles.submit}>
           <Button
             // type="submit"
@@ -98,7 +112,7 @@ export const Form = ({
           </Button>
         </div>
       </div>
-      {isSuccess && (
+      {/* {isSuccess && (
         <div role="alert" className={cn(styles.success, styles.panel)}>
           <div className={styles.successEIN}>Ваш отзыв отправлен</div>
           <div>Спасибо, ваш отзыв будет опубликован после проверки.</div>
@@ -122,7 +136,7 @@ export const Form = ({
             <CloseIcon />
           </button>
         </div>
-      )}
+      )} */}
     </form>
   );
 };

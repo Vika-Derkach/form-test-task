@@ -3,7 +3,7 @@ body {
 	padding: 0;
 	margin: 0;
 	color: var(--black);
-	background: #F5F6F8;
+	/* background: #F5F6F8; */
 	font-family: 'Inter', sans-serif;
 }
 
@@ -30,6 +30,8 @@ a {
 :root {
 	--black: #000000;
 	--white: #FFFFFF;
+	--gray: #CFD6DE;
+	--gray-white: #F9F9FA;
   --gray-light: #EDEFF1;
 	--primary: #6367F6;
   --primary-hover: #2E0CB6;

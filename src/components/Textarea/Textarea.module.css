@@ -4,15 +4,16 @@
 	border: 1px solid var(--gray-light);
 	border-radius: 10px;
 	outline-color: var(--primary);
-	background: var(--white);
+	background: var(--gray-white);
 	font-family: var(--font-family);
 	font-weight: 400;
     font-size: 14px;
     line-height: 28px;
+	width: 100%;
 }
 
 .textarea::placeholder {
-	color: var(--gray-light);
+	color: var(--gray);
 }
 
 .error {
@@ -21,6 +22,7 @@
 
 .textareaWrapper {
 	position: relative;
+	margin-bottom: 9px;
 }
 
 .errorMessage {

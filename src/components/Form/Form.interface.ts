@@ -1,7 +1,7 @@
 export interface IReviewForm {
   name: string;
   EIN: string;
-  description: string;
+  notes: string;
 }
 
 export interface IReviewSentResponce {

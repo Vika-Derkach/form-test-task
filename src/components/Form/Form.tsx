@@ -22,7 +22,7 @@ const FormSchema = yup.object().shape({
     .max(20, "Must be shorted")
     .required("Enter a name"),
   EIN: yup.string().matches(phoneRegExp, "EIN is not valid"),
-  notes: yup.string().max(100, "Must be shorted"),
+  notes: yup.string().max(200, "Must be shorted"),
 });
 
 export const Form = ({

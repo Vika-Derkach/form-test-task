@@ -7,7 +7,6 @@ import { SelectEnum } from "./components/SelectPayment/SelectPayment.props";
 function App() {
   const [isOpened, setIsOpened] = useState<boolean>(false);
   const [isEdit, setIsEdit] = useState<boolean>(false);
-  const [isOpenedDefault, setIsOpenedDefault] = useState<boolean>(false);
 
   const defaultValues: IReviewForm = {
     name: "Viktoria",

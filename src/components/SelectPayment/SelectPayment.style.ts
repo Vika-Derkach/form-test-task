@@ -32,6 +32,7 @@ export const list = {
   borderRadius: "10px",
   border: "1px solid var(--gray-light)",
 };
+
 export const options = {
   fontWeight: "400",
   fontSize: "14px",

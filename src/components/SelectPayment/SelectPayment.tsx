@@ -13,7 +13,7 @@ interface IOption {
 
 export const SelectPayment = forwardRef(
   (
-    { className, name, error, onChange, control, ...props }: SelectProps,
+    { className, control }: SelectProps,
     ref: ForwardedRef<HTMLInputElement>
   ): JSX.Element => {
     const options: IOption[] = [

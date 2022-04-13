@@ -14,17 +14,16 @@ import { IReviewForm } from "./Form.interface";
 import styles from "./Form.module.css";
 import { FormProps } from "./Form.props";
 
-const phoneRegExp =
-  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+const phoneRegExp = /^[1-9]\d?-\d{7}$|^\s*$/;
 
 const FormSchema = yup.object().shape({
   name: yup
     .string()
-    .required("Enter a name")
-    .min(1, "Must be bigger than one letter")
-    .max(20, "Must be shorted"),
+    .min(2, "Must be bigger than one letter")
+    .max(20, "Must be shorted")
+    .required("Enter a name"),
   EIN: yup.string().matches(phoneRegExp, "EIN is not valid"),
-  notes: yup.string(),
+  notes: yup.string().max(100, "Must be shorted"),
 });
 
 export const Form = ({
@@ -38,7 +37,7 @@ export const Form = ({
     register,
     control,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, touchedFields },
     reset,
     clearErrors,
   } = useForm<IReviewForm>({

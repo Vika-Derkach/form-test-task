@@ -12,7 +12,7 @@
 }
 
 .m {
-	color: #5A607D;
+	color: var(--gray-dark);
     font-size: 14px;
     line-height: 28px;
     margin-bottom: 16px;

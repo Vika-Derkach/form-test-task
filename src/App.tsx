@@ -1,4 +1,3 @@
-import cn from "classnames";
 import React, { useState } from "react";
 import styles from "./App.module.css";
 import { Button, Form } from "./components";
@@ -7,6 +6,7 @@ import { SelectEnum } from "./components/SelectPayment/SelectPayment.props";
 
 function App() {
   const [isOpened, setIsOpened] = useState<boolean>(false);
+  const [isEdit, setIsEdit] = useState<boolean>(false);
   const [isOpenedDefault, setIsOpenedDefault] = useState<boolean>(false);
 
   const defaultValues: IReviewForm = {
@@ -16,47 +16,30 @@ function App() {
     paymentMethod: SelectEnum.Cash,
   };
 
+  const handleOpen = (isEdit: boolean) => {
+    setIsEdit(isEdit);
+    setIsOpened(true);
+  };
+
   return (
-    <div className={cn(styles.app)}>
-      <div
-        className={cn(styles.layout, {
-          [styles.blockDisplay]: isOpened,
-          [styles.hiddenDisplay]: !isOpened,
-        })}
-      ></div>
-      <div
-        className={cn(styles.layout, {
-          [styles.blockDisplay]: isOpenedDefault,
-          [styles.hiddenDisplay]: !isOpenedDefault,
-        })}
-      ></div>
+    <div className={styles.app}>
+      {isOpened && (
+        <div className={styles.layout}>
+          <Form
+            isOpened={isOpened}
+            defaultValues={isEdit ? defaultValues : undefined}
+            setIsOpened={setIsOpened}
+          />
+        </div>
+      )}
       <div className={styles.buttons}>
-        <Button appearance="white" onClick={() => setIsOpenedDefault(true)}>
+        <Button appearance="white" onClick={() => handleOpen(true)}>
           Edit
         </Button>
-        <Button appearance="primary" onClick={() => setIsOpened(true)}>
+        <Button appearance="primary" onClick={() => handleOpen(false)}>
           Open
         </Button>
       </div>
-
-      <Form
-        defaultValues={defaultValues}
-        isOpened={isOpenedDefault}
-        setIsOpened={setIsOpenedDefault}
-        className={cn({
-          [styles.blockDisplay]: isOpenedDefault,
-          [styles.hiddenDisplay]: !isOpenedDefault,
-        })}
-      />
-
-      <Form
-        isOpened={isOpened}
-        setIsOpened={setIsOpened}
-        className={cn({
-          [styles.blockDisplay]: isOpened,
-          [styles.hiddenDisplay]: !isOpened,
-        })}
-      />
     </div>
   );
 }

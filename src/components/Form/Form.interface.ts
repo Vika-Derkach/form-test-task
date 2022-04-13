@@ -1,8 +1,10 @@
+import { SelectEnum } from "../SelectPayment/SelectPayment.props";
+
 export interface IReviewForm {
   name: string;
   EIN: string;
   notes: string;
-  paymentMethod: string;
+  paymentMethod: SelectEnum;
 }
 
 export interface IReviewSentResponce {

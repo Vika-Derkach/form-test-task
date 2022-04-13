@@ -11,3 +11,9 @@ export interface SelectProps
   error?: FieldError;
   control: Control<IReviewForm>;
 }
+
+export enum SelectEnum {
+  Cash,
+  Checks,
+  CreditCards,
+}

@@ -1,57 +1,61 @@
 import cn from "classnames";
-import React, { ForwardedRef, forwardRef } from "react";
+import React from "react";
 import { Controller } from "react-hook-form";
-import Select, {
-  components,
-  DropdownIndicatorProps,
-  IndicatorSeparatorProps,
-} from "react-select";
+import Select, { components } from "react-select";
 import { ReactComponent as ArrowIcon } from "./arrow.svg";
-import { SelectProps } from "./SelectPayment.props";
+import { SelectEnum, SelectProps } from "./SelectPayment.props";
 import * as styles from "./SelectPayment.style";
 
-interface Option {
-  value: string;
+interface IOption {
+  value: SelectEnum;
   label: string;
 }
 
-export const SelectPayment = forwardRef(
-  (
-    { className, name, error, onChange, control, ...props }: SelectProps,
-    ref: ForwardedRef<HTMLSelectElement>
-  ): JSX.Element => {
-    const options: Option[] = [
-      { value: "cash", label: "Cash" },
-      { value: "checks", label: "Checks" },
-      { value: "credit cards", label: "Credit cards" },
-    ];
+export const SelectPayment = ({
+  className,
+  name,
+  error,
+  onChange,
+  control,
+  ...props
+}: SelectProps): JSX.Element => {
+  const options: IOption[] = [
+    { value: SelectEnum.Cash, label: "Cash" },
+    { value: SelectEnum.Checks, label: "Checks" },
+    { value: SelectEnum.CreditCards, label: "Credit cards" },
+  ];
 
-    const DropdownIndicator = (props: DropdownIndicatorProps) => {
-      return (
-        <components.DropdownIndicator {...props}>
-          <ArrowIcon />
-        </components.DropdownIndicator>
-      );
-    };
-
-    const indicatorSeparatorStyle = {
-      display: "none",
-    };
-
-    const IndicatorSeparator = ({ innerProps }: IndicatorSeparatorProps) => {
-      return <span style={indicatorSeparatorStyle} {...innerProps} />;
-    };
-
+  const DropdownIndicator = (props: any) => {
     return (
-      <div className={cn(className)}>
-        <Controller
-          name="paymentMethod"
-          control={control}
-          render={({ field }) => (
+      <components.DropdownIndicator {...props}>
+        <ArrowIcon />
+      </components.DropdownIndicator>
+    );
+  };
+
+  return (
+    <div className={cn(className)}>
+      <Controller
+        control={control}
+        render={({ field: { onChange, value, name, ref } }) => {
+          const currentSelection = options.find((c) => c.value === value);
+
+          const handleSelectChange = (selectedOption: IOption | null) => {
+            onChange(selectedOption?.value);
+          };
+
+          return (
             <Select
-              placeholder={"Choose payment method"}
-              components={{ DropdownIndicator, IndicatorSeparator }}
+              inputRef={ref}
+              value={currentSelection}
+              name={name}
+              components={{ DropdownIndicator }}
+              options={options}
+              onChange={handleSelectChange}
               styles={{
+                indicatorSeparator: () => ({
+                  display: "none",
+                }),
                 placeholder: (base) => ({
                   ...base,
                   ...styles.placeholder,
@@ -85,17 +89,20 @@ export const SelectPayment = forwardRef(
                   };
                 },
               }}
-              options={options}
             />
-          )}
-        />
+          );
+        }}
+        name="paymentMethod"
+        rules={{
+          required: true,
+        }}
+      />
 
-        {/* {error && (
+      {/* {error && (
           <span role="alert" className={styles.errorMessage}>
             {error.message}
           </span>
         )} */}
-      </div>
-    );
-  }
-);
+    </div>
+  );
+};

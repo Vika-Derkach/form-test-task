@@ -16,6 +16,7 @@ export const Form = ({
   isOpened,
   setIsOpened,
   className,
+  defaultValues,
   ...props
 }: FormProps): JSX.Element => {
   const {
@@ -25,7 +26,9 @@ export const Form = ({
     formState: { errors },
     reset,
     clearErrors,
-  } = useForm<IReviewForm>();
+  } = useForm<IReviewForm>({
+    defaultValues,
+  });
 
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const [error, setError] = useState<any>();

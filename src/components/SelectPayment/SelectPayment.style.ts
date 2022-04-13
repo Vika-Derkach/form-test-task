@@ -20,6 +20,10 @@ export const control = {
   background: "var(--gray-white)",
   borderRadius: "10px",
   border: "1px solid var(--gray-light)",
+  boxShadow: "none",
+  "&:hover": {
+    borderColor: "var(--primary)",
+  },
 };
 
 export const list = {

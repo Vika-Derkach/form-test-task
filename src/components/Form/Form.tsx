@@ -1,6 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import cn from "classnames";
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { Button } from "../Button/Button";
@@ -18,9 +18,11 @@ const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
 const FormSchema = yup.object().shape({
-  name: yup.string().required("Enter a name"),
-  // .min(1, "Must be bigger than one letter")
-  // .max(20, "Must be shorted"),
+  name: yup
+    .string()
+    .required("Enter a name")
+    .min(1, "Must be bigger than one letter")
+    .max(20, "Must be shorted"),
   EIN: yup.string().matches(phoneRegExp, "EIN is not valid"),
   notes: yup.string(),
 });
@@ -44,27 +46,13 @@ export const Form = ({
     resolver: yupResolver(FormSchema),
   });
 
-  const [isSuccess, setIsSuccess] = useState<boolean>(false);
-  const [error, setError] = useState<any>();
-
   const onSubmit = async (formData: IReviewForm) => {
     try {
-      // const data = await submit({
-      //   ...formData,
-      //   productId,
-      // });
       console.log(formData);
       setIsOpened(false);
       reset();
-
-      // if (data.message) {
-      //   setIsSuccess(true);
-      //   reset();
-      // } else {
-      //   setError("something went wrong");
-      // }
     } catch (e) {
-      setError(e);
+      console.error(e);
     }
   };
 
@@ -124,7 +112,6 @@ export const Form = ({
         <Devider className={styles.hr} />
         <div className={styles.submit}>
           <Button
-            // type="submit"
             appearance="white"
             tabIndex={isOpened ? 0 : -1}
             onClick={() => setIsOpened(false)}
@@ -136,37 +123,11 @@ export const Form = ({
             appearance="primary"
             tabIndex={isOpened ? 0 : -1}
             onClick={() => clearErrors()}
-            // onClick={() => setIsOpened(false)}
           >
             Create
           </Button>
         </div>
       </div>
-      {/* {isSuccess && (
-        <div role="alert" className={cn(styles.success, styles.panel)}>
-          <div className={styles.successEIN}>Ваш отзыв отправлен</div>
-          <div>Спасибо, ваш отзыв будет опубликован после проверки.</div>
-          <button
-            aria-label="Закрить оповещение"
-            className={styles.close}
-            onClick={() => setIsSuccess(false)}
-          >
-            <CloseIcon />
-          </button>
-        </div>
-      )}
-      {error && (
-        <div role="alert" className={cn(styles.error, styles.panel)}>
-          Что-то пошло не так, попробуйте обновить страницу
-          <button
-            aria-label="Закрить оповещение"
-            className={styles.close}
-            onClick={() => setError(undefined)}
-          >
-            <CloseIcon />
-          </button>
-        </div>
-      )} */}
     </form>
   );
 };

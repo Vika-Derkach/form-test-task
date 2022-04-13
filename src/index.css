@@ -3,33 +3,12 @@ body {
 	padding: 0;
 	margin: 0;
 	color: var(--black);
-	/* background: #F5F6F8; */
+	background: #F5F6F8;
 	font-family: 'Inter', sans-serif;
-}
-
-a {
-	color: inherit;
-	text-decoration: none;
 }
 
 * {
 	box-sizing: border-box;
-}
-
-.visuallyHidden {
-	width: 0;
-	height: 0;
-	overflow: hidden;
-	position: absolute;
-}
-
-.blockDisplay {
-	visibility: visible;
-}
-
-.hiddenDisplay {
-	visibility: hidden;
-	background-color: #000000;
 }
 
 :root {
@@ -37,8 +16,8 @@ a {
 	--white: #FFFFFF;
 	--gray: #CFD6DE;
 	--gray-white: #F9F9FA;
-  --gray-light: #EDEFF1;
+    --gray-light: #EDEFF1;
 	--primary: #6367F6;
-  --primary-hover: #2E0CB6;
-  --red: #D0676A;
+    --primary-hover: #2E0CB6;
+    --red: #D0676A;
 }

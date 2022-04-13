@@ -10,9 +10,9 @@ function App() {
   const [isOpenedDefault, setIsOpenedDefault] = useState<boolean>(false);
 
   const defaultValues: IReviewForm = {
-    name: "string",
-    EIN: "string",
-    notes: "string",
+    name: "Viktoria",
+    EIN: "12-3456789",
+    notes: "I am a new user",
     paymentMethod: SelectEnum.Cash,
   };
 

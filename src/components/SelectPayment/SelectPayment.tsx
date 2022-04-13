@@ -96,12 +96,6 @@ export const SelectPayment = ({
           required: true,
         }}
       />
-
-      {/* {error && (
-          <span role="alert" className={styles.errorMessage}>
-            {error.message}
-          </span>
-        )} */}
     </div>
   );
 };

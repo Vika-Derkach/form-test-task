@@ -2,6 +2,7 @@
 	position: absolute;
 	width: 100%;
 }
+
 .form {
 	font-size: 14px;
 	line-height: 24px;
@@ -58,22 +59,33 @@
 	color: var(--red)
 }
 
-@media screen and (max-width: 1100px) {
-	.reviewForm {
-		grid-template-columns: [start] 1fr 1fr [end];
+@media screen and (max-width: 1062px) {
+	.form {
+		width: 80%;
+		transform: translateX(10%);
 	}
 
-	.title {
-		justify-self: normal;
-	}
-
-	.rating {
-		grid-column: start / end;
-	}
+	
 }
 
 @media screen and (max-width: 640px) {
-	.reviewForm {
-		grid-template-columns: [start] 1fr [end];
+	.form {
+		width: 100%;
+		transform: none;
+	}
+}
+
+@media screen and (max-width: 502px) {
+	.form {
+		width: 100%;
+		transform: none;
+	}
+
+	.submit {
+		flex-direction: column;
+	}
+
+	.formContent {
+		width: 80%;
 	}
 }

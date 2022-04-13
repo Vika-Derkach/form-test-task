@@ -6,7 +6,3 @@ export interface IReviewForm {
   notes: string;
   paymentMethod: SelectEnum;
 }
-
-export interface IReviewSentResponce {
-  message: string;
-}

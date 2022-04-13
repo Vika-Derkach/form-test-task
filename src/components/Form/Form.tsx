@@ -1,5 +1,4 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import cn from "classnames";
 import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -37,7 +36,7 @@ export const Form = ({
     register,
     control,
     handleSubmit,
-    formState: { errors, touchedFields },
+    formState: { errors },
     reset,
     clearErrors,
   } = useForm<IReviewForm>({
@@ -57,7 +56,7 @@ export const Form = ({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.formWrapper}>
-      <div className={cn(styles.form, className)} {...props}>
+      <div className={styles.form} {...props}>
         <div className={styles.formTitle}>
           Create new customer
           <button
@@ -82,7 +81,6 @@ export const Form = ({
           <Label>Customers EIN</Label>
           <Input
             {...register("EIN")}
-            className={styles.EIN}
             placeholder="Enter cusomer EIN"
             error={errors.EIN}
             tabIndex={isOpened ? 0 : -1}
@@ -91,7 +89,6 @@ export const Form = ({
           <Label>Notes</Label>
           <Textarea
             {...register("notes")}
-            className={styles.notes}
             placeholder="Notes visible only to you and your team"
             error={errors.notes}
             tabIndex={isOpened ? 0 : -1}
@@ -108,7 +105,7 @@ export const Form = ({
           />
         </div>
 
-        <Devider className={styles.hr} />
+        <Devider />
         <div className={styles.submit}>
           <Button
             appearance="white"

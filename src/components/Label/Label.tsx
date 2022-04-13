@@ -6,12 +6,12 @@ import { LabelProps } from "./Label.props";
 export const Label = ({
   size = "s",
   children,
-  className,
+
   ...props
 }: LabelProps): JSX.Element => {
   return (
     <label
-      className={cn(styles.label, className, {
+      className={cn(styles.label, {
         [styles.s]: size === "s",
         [styles.m]: size === "m",
       })}

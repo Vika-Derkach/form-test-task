@@ -1,4 +1,3 @@
-import cn from "classnames";
 import React, { ForwardedRef, forwardRef } from "react";
 import { Controller } from "react-hook-form";
 import Select, { components } from "react-select";
@@ -13,7 +12,7 @@ interface IOption {
 
 export const SelectPayment = forwardRef(
   (
-    { className, control }: SelectProps,
+    { control }: SelectProps,
     ref: ForwardedRef<HTMLInputElement>
   ): JSX.Element => {
     const options: IOption[] = [
@@ -31,7 +30,7 @@ export const SelectPayment = forwardRef(
     };
 
     return (
-      <div className={cn(className)}>
+      <div>
         <Controller
           control={control}
           render={({ field: { onChange, value, name, ref } }) => {

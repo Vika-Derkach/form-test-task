@@ -104,6 +104,7 @@ export const Form = ({
             aria-label="paymentMethod"
             name="hhh"
             tabIndex={isOpened ? 0 : -1}
+            control={control}
           />
         </div>
 

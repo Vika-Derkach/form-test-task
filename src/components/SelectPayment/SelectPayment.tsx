@@ -1,5 +1,6 @@
 import cn from "classnames";
 import React, { ForwardedRef, forwardRef } from "react";
+import { Controller } from "react-hook-form";
 import Select, {
   components,
   DropdownIndicatorProps,
@@ -9,12 +10,17 @@ import { ReactComponent as ArrowIcon } from "./arrow.svg";
 import { SelectProps } from "./SelectPayment.props";
 import * as styles from "./SelectPayment.style";
 
+interface Option {
+  value: string;
+  label: string;
+}
+
 export const SelectPayment = forwardRef(
   (
-    { className, name, error, onChange, ...props }: SelectProps,
+    { className, name, error, onChange, control, ...props }: SelectProps,
     ref: ForwardedRef<HTMLSelectElement>
   ): JSX.Element => {
-    const options = [
+    const options: Option[] = [
       { value: "cash", label: "Cash" },
       { value: "checks", label: "Checks" },
       { value: "credit cards", label: "Credit cards" },
@@ -38,45 +44,52 @@ export const SelectPayment = forwardRef(
 
     return (
       <div className={cn(className)}>
-        <Select
-          placeholder={"Choose payment method"}
-          components={{ DropdownIndicator, IndicatorSeparator }}
-          styles={{
-            placeholder: (base) => ({
-              ...base,
-              ...styles.placeholder,
-            }),
-            container: (base) => ({
-              ...base,
-              ...styles.select,
-            }),
-            control: (base) => ({
-              ...base,
-              ...styles.control,
-            }),
-            option: (base, { isDisabled, isFocused, isSelected }) => {
-              return {
-                ...base,
-                ...styles.options,
-                backgroundColor: isDisabled
-                  ? undefined
-                  : isSelected
-                  ? "var(--primary)"
-                  : // : isFocused
-                    // ? "var(--primary)"
-                    undefined,
-                color: isDisabled
-                  ? "#ccc"
-                  : isSelected
-                  ? "var(--white)"
-                  : "var(--black)",
+        <Controller
+          name="paymentMethod"
+          control={control}
+          render={({ field }) => (
+            <Select
+              placeholder={"Choose payment method"}
+              components={{ DropdownIndicator, IndicatorSeparator }}
+              styles={{
+                placeholder: (base) => ({
+                  ...base,
+                  ...styles.placeholder,
+                }),
+                container: (base) => ({
+                  ...base,
+                  ...styles.select,
+                }),
+                control: (base) => ({
+                  ...base,
+                  ...styles.control,
+                }),
+                option: (base, { isDisabled, isFocused, isSelected }) => {
+                  return {
+                    ...base,
+                    ...styles.options,
+                    backgroundColor: isDisabled
+                      ? undefined
+                      : isSelected
+                      ? "var(--primary)"
+                      : // : isFocused
+                        // ? "var(--primary)"
+                        undefined,
+                    color: isDisabled
+                      ? "#ccc"
+                      : isSelected
+                      ? "var(--white)"
+                      : "var(--black)",
 
-                cursor: isDisabled ? "not-allowed" : "default",
-              };
-            },
-          }}
-          options={options}
+                    cursor: isDisabled ? "not-allowed" : "default",
+                  };
+                },
+              }}
+              options={options}
+            />
+          )}
         />
+
         {/* {error && (
           <span role="alert" className={styles.errorMessage}>
             {error.message}

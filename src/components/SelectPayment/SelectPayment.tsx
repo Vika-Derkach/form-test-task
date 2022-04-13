@@ -62,9 +62,9 @@ export const SelectPayment = forwardRef(
                   ? undefined
                   : isSelected
                   ? "var(--primary)"
-                  : isFocused
-                  ? "var(--primary)"
-                  : undefined,
+                  : // : isFocused
+                    // ? "var(--primary)"
+                    undefined,
                 color: isDisabled
                   ? "#ccc"
                   : isSelected

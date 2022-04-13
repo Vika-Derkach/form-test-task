@@ -14,6 +14,7 @@ import { FormProps } from "./Form.props";
 
 export const Form = ({
   isOpened,
+  setIsOpened,
   className,
   ...props
 }: FormProps): JSX.Element => {
@@ -36,6 +37,7 @@ export const Form = ({
       //   productId,
       // });
       console.log(formData);
+      setIsOpened(false);
 
       // if (data.message) {
       //   setIsSuccess(true);
@@ -49,11 +51,15 @@ export const Form = ({
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.formWrapper}>
       <div className={cn(styles.form, className)} {...props}>
         <div className={styles.formTitle}>
           Create new customer
-          <button aria-label="Close the form" className={styles.close}>
+          <button
+            aria-label="Close the form"
+            className={styles.close}
+            onClick={() => setIsOpened(false)}
+          >
             <CloseIcon />
           </button>
         </div>
@@ -107,7 +113,7 @@ export const Form = ({
             // type="submit"
             appearance="white"
             tabIndex={isOpened ? 0 : -1}
-            onClick={() => clearErrors()}
+            onClick={() => setIsOpened(false)}
           >
             Cancel
           </Button>
@@ -116,6 +122,7 @@ export const Form = ({
             appearance="primary"
             tabIndex={isOpened ? 0 : -1}
             onClick={() => clearErrors()}
+            // onClick={() => setIsOpened(false)}
           >
             Create
           </Button>

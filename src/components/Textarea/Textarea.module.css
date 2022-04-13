@@ -10,6 +10,7 @@
     font-size: 14px;
     line-height: 28px;
 	width: 100%;
+	resize: none;
 }
 
 .textarea::placeholder {

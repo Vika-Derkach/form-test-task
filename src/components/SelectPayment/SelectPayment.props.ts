@@ -13,7 +13,7 @@ export interface SelectProps
 }
 
 export enum SelectEnum {
-  Cash,
-  Checks,
-  CreditCards,
+  Cash = "Cash",
+  Checks = "Checks",
+  CreditCards = "CreditCards",
 }

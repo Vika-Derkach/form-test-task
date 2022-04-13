@@ -1,6 +1,8 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import cn from "classnames";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import * as yup from "yup";
 import { Button } from "../Button/Button";
 import { Devider } from "../Devider/Devider";
 import { Input } from "../Input/Input";
@@ -11,6 +13,17 @@ import { ReactComponent as CloseIcon } from "./close.svg";
 import { IReviewForm } from "./Form.interface";
 import styles from "./Form.module.css";
 import { FormProps } from "./Form.props";
+
+const phoneRegExp =
+  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+
+const FormSchema = yup.object().shape({
+  name: yup.string().required("Enter a name"),
+  // .min(1, "Must be bigger than one letter")
+  // .max(20, "Must be shorted"),
+  EIN: yup.string().matches(phoneRegExp, "EIN is not valid"),
+  notes: yup.string(),
+});
 
 export const Form = ({
   isOpened,
@@ -28,6 +41,7 @@ export const Form = ({
     clearErrors,
   } = useForm<IReviewForm>({
     defaultValues,
+    resolver: yupResolver(FormSchema),
   });
 
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
@@ -41,6 +55,7 @@ export const Form = ({
       // });
       console.log(formData);
       setIsOpened(false);
+      reset();
 
       // if (data.message) {
       //   setIsSuccess(true);
@@ -67,11 +82,11 @@ export const Form = ({
           </button>
         </div>
         <div className={styles.formContent}>
-          <Label>Customer name</Label>
+          <Label>
+            Customer name<span className={styles.asterisk}>*</span>
+          </Label>
           <Input
-            {...register("name", {
-              required: { value: true, message: "Enter cusomer name" },
-            })}
+            {...register("name")}
             placeholder="Enter cusomer name"
             error={errors.name}
             tabIndex={isOpened ? 0 : -1}
@@ -79,9 +94,7 @@ export const Form = ({
           />
           <Label>Customers EIN</Label>
           <Input
-            {...register("EIN", {
-              required: { value: true, message: "Enter cusomer EIN" },
-            })}
+            {...register("EIN")}
             className={styles.EIN}
             placeholder="Enter cusomer EIN"
             error={errors.EIN}
@@ -90,9 +103,7 @@ export const Form = ({
           />
           <Label>Notes</Label>
           <Textarea
-            {...register("notes", {
-              required: { value: true, message: "Enter notes" },
-            })}
+            {...register("notes")}
             className={styles.notes}
             placeholder="Notes visible only to you and your team"
             error={errors.notes}
@@ -105,7 +116,6 @@ export const Form = ({
           <SelectPayment
             {...register("paymentMethod")}
             aria-label="paymentMethod"
-            name="hhh"
             tabIndex={isOpened ? 0 : -1}
             control={control}
           />

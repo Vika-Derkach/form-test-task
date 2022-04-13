@@ -68,6 +68,7 @@ export const SelectPayment = ({
                   ...base,
                   ...styles.control,
                 }),
+
                 option: (base, { isDisabled, isFocused, isSelected }) => {
                   return {
                     ...base,
@@ -76,9 +77,7 @@ export const SelectPayment = ({
                       ? undefined
                       : isSelected
                       ? "var(--primary)"
-                      : // : isFocused
-                        // ? "var(--primary)"
-                        undefined,
+                      : undefined,
                     color: isDisabled
                       ? "#ccc"
                       : isSelected

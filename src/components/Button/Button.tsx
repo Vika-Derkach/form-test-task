@@ -9,12 +9,6 @@ export const Button = ({
   className,
   ...props
 }: ButtonProps): JSX.Element => {
-  //   const scale = useMotionValue(1);
-
-  //   useEffect(() => {
-  //     scale.onChange((s) => console.log(s));
-  //   }, []);
-
   return (
     <button
       className={cn(styles.button, className, {

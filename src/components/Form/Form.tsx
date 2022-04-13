@@ -5,7 +5,7 @@ import { Button } from "../Button/Button";
 import { Devider } from "../Devider/Devider";
 import { Input } from "../Input/Input";
 import { Label } from "../Label/Label";
-import { Select } from "../Select/Select";
+import { SelectPayment } from "../SelectPayment/SelectPayment";
 import { Textarea } from "../Textarea/Textarea";
 import { ReactComponent as CloseIcon } from "./close.svg";
 import { IReviewForm } from "./Form.interface";
@@ -93,7 +93,7 @@ export const Form = ({
           />
           <Label size="m">Payment and billing:</Label>
           <Label>Primary payment method</Label>
-          <Select
+          <SelectPayment
             {...register("paymentMethod")}
             aria-label="paymentMethod"
             name="hhh"

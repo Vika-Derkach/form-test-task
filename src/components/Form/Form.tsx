@@ -68,6 +68,7 @@ export const Form = ({
             tabIndex={isOpened ? 0 : -1}
             aria-invalid={errors.name ? true : false}
           />
+          <Label>Customers EIN</Label>
           <Input
             {...register("EIN", {
               required: { value: true, message: "Enter cusomer EIN" },
@@ -78,6 +79,7 @@ export const Form = ({
             tabIndex={isOpened ? 0 : -1}
             aria-invalid={errors.EIN ? true : false}
           />
+          <Label>Notes</Label>
           <Textarea
             {...register("notes", {
               required: { value: true, message: "Enter notes" },
@@ -89,7 +91,14 @@ export const Form = ({
             aria-label="Notes"
             aria-invalid={errors.notes ? true : false}
           />
-          <Select name="hhh" />
+          <Label size="m">Payment and billing:</Label>
+          <Label>Primary payment method</Label>
+          <Select
+            {...register("paymentMethod")}
+            aria-label="paymentMethod"
+            name="hhh"
+            tabIndex={isOpened ? 0 : -1}
+          />
         </div>
 
         <Devider className={styles.hr} />

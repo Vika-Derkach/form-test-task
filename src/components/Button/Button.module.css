@@ -24,6 +24,7 @@
 	color: var(--black);
 	background-color: var(--white);
 	border: 1px solid var(--gray-light);
+	margin-right: 21px;
 }
 
 .white:hover {
